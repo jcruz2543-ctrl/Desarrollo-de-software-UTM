@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|c:\\users\\jeanc\\source\\repos\\unidad2\\unidad2\\tickets.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|solutionrelative:unidad2\\tickets.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|c:\\users\\jeanc\\source\\repos\\unidad2\\unidad2\\reportar.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|solutionrelative:unidad2\\reportar.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|c:\\users\\jeanc\\source\\repos\\unidad2\\unidad2\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|solutionrelative:unidad2\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|c:\\users\\jeanc\\source\\repos\\unidad2\\unidad2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9174DB78-408A-4066-A114-E06EED94BB17}|UNIDAD2\\UNIDAD2.csproj|solutionrelative:unidad2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tickets.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\tickets.html",
+              "RelativeDocumentMoniker": "UNIDAD2\\tickets.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\tickets.html",
+              "RelativeToolTip": "UNIDAD2\\tickets.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-07T02:25:52.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "reportar.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\reportar.html",
+              "RelativeDocumentMoniker": "UNIDAD2\\reportar.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\reportar.html",
+              "RelativeToolTip": "UNIDAD2\\reportar.html",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-07T02:25:43.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\index.html",
+              "RelativeDocumentMoniker": "UNIDAD2\\index.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\index.html",
+              "RelativeToolTip": "UNIDAD2\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-06-07T02:25:37.143Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\Program.cs",
+              "RelativeDocumentMoniker": "UNIDAD2\\Program.cs",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\UNIDAD2\\UNIDAD2\\Program.cs",
+              "RelativeToolTip": "UNIDAD2\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T02:23:11.062Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

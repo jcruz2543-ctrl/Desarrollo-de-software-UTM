@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sistema de gestión de incidentes Help Desk — reporte y seguimiento de tickets de soporte técnico." />
+    <meta name="author" content="Help Desk Institucional" />
+    <meta name="keywords" content="help desk, soporte técnico, incidentes, tickets, gestión" />
+    <title>Help Desk | Inicio</title>
+    <style>
+        /* ── Variables & Reset ─────────────────────────────────────────── */
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --border: #dbeafe;
+            --accent: #0066cc;
+            --accent2: #004aad;
+            --text: #1e293b;
+            --muted: #64748b;
+            --danger: #dc2626;
+            --warn: #d97706;
+            --ok: #16a34a;
+            --font-head: 'Arial', sans-serif;
+            --font-body: 'Segoe UI', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        img {
+            max-width: 100%;
+        }
+
+
+        /* ── Header / Nav ─────────────────────────────────────────────── */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .75rem 1.5rem;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: .05em;
+        }
+
+            .logo span {
+                color: var(--text);
+            }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+            nav ul li a {
+                color: var(--muted);
+                font-size: .85rem;
+                letter-spacing: .05em;
+                text-transform: uppercase;
+                padding: .3rem 0;
+                border-bottom: 2px solid transparent;
+                transition: color .2s, border-color .2s;
+            }
+
+                nav ul li a:hover,
+                nav ul li a[aria-current="page"] {
+                    color: var(--accent);
+                    border-bottom-color: var(--accent);
+                    text-decoration: none;
+                }
+
+        /* ── Main layout ──────────────────────────────────────────────── */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ── Hero ─────────────────────────────────────────────────────── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            line-height: 1.15;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+            .hero-text h1 em {
+                color: var(--text);
+                font-style: normal;
+            }
+
+        .hero-text p {
+            color: var(--muted);
+            max-width: 38ch;
+            margin-bottom: 2rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .6rem 1.4rem;
+            font-family: var(--font-body);
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            border: 1px solid;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .btn-primary {
+            background: var(--accent2);
+            color: #fff;
+            border-color: var(--accent2);
+        }
+
+            .btn-primary:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+                text-decoration: none;
+            }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+            .btn-outline:hover {
+                background: var(--accent);
+                color: #000;
+                text-decoration: none;
+            }
+
+        /* terminal box */
+        .hero-terminal {
+            background: #050a13;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            font-size: .82rem;
+        }
+
+        .terminal-bar {
+            display: flex;
+            gap: .4rem;
+            margin-bottom: 1rem;
+        }
+
+            .terminal-bar span {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+
+        .t-red {
+            background: var(--danger);
+        }
+
+        .t-yel {
+            background: var(--warn);
+        }
+
+        .t-grn {
+            background: var(--ok);
+        }
+
+        .terminal-line {
+            color: var(--muted);
+            margin-bottom: .3rem;
+        }
+
+            .terminal-line .cmd {
+                color: var(--accent);
+            }
+
+            .terminal-line .val {
+                color: var(--ok);
+            }
+
+            .terminal-line .num {
+                color: var(--warn);
+            }
+
+            .terminal-line .err {
+                color: var(--danger);
+            }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background: var(--accent);
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ── Stats row ────────────────────────────────────────────────── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin: 3rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+            .stat-card .number {
+                font-family: var(--font-head);
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--accent);
+                display: block;
+            }
+
+            .stat-card .label {
+                color: var(--muted);
+                font-size: .78rem;
+                text-transform: uppercase;
+                letter-spacing: .08em;
+            }
+
+        /* ── Features ─────────────────────────────────────────────────── */
+        .section-title {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            color: var(--accent);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+            .section-title::before {
+                content: '// ';
+                color: var(--muted);
+            }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: border-color .2s;
+        }
+
+            .feature-card:hover {
+                border-color: var(--accent);
+            }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: .8rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-head);
+            font-size: .95rem;
+            color: var(--text);
+            margin-bottom: .5rem;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: .82rem;
+        }
+
+        /* ── Recent tickets preview ───────────────────────────────────── */
+        .tickets-preview {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+            .tickets-preview header {
+                background: transparent;
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 1.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: static;
+            }
+
+                .tickets-preview header h2 {
+                    font-family: var(--font-head);
+                    font-size: .95rem;
+                    color: var(--text);
+                }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead tr {
+            background: #0d1526;
+        }
+
+        th {
+            padding: .75rem 1rem;
+            text-align: left;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: var(--muted);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: .7rem 1rem;
+            font-size: .82rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tbody tr:hover {
+            background: #0d1526;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: .2rem .6rem;
+            font-size: .7rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            border: 1px solid;
+        }
+
+        .badge-open {
+            color: var(--warn);
+            border-color: var(--warn);
+        }
+
+        .badge-closed {
+            color: var(--ok);
+            border-color: var(--ok);
+        }
+
+        .badge-prog {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .badge-high {
+            color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .badge-med {
+            color: var(--warn);
+            border-color: var(--warn);
+        }
+
+        .badge-low {
+            color: var(--ok);
+            border-color: var(--ok);
+        }
+
+        /* ── CTA Banner ───────────────────────────────────────────────── */
+        .cta-banner {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+            .cta-banner h2 {
+                font-family: var(--font-head);
+                font-size: 1.4rem;
+                color: var(--accent);
+                margin-bottom: .75rem;
+            }
+
+            .cta-banner p {
+                color: var(--muted);
+                margin-bottom: 1.5rem;
+            }
+
+        /* ── Footer ───────────────────────────────────────────────────── */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+        }
+
+        footer h4 {
+            font-family: var(--font-head);
+            font-size: .85rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: .08em;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+            footer ul li {
+                margin-bottom: .5rem;
+            }
+
+                footer ul li a {
+                    color: var(--muted);
+                    font-size: .82rem;
+                }
+
+                    footer ul li a:hover {
+                        color: var(--accent);
+                    }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 1rem 1.5rem;
+            color: var(--muted);
+            font-size: .75rem;
+        }
+
+        /* ── Responsive ───────────────────────────────────────────────── */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-terminal {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            th:nth-child(4), td:nth-child(4),
+            th:nth-child(5), td:nth-child(5) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ HEADER ══════════════════════════════════════════════════════ -->
+    <header>
+        <nav aria-label="Navegación principal">
+            <span class="logo">HELP<span>DESK</span></span>
+            <ul role="list">
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <li><a href="reportar.html">Reportar</a></li>
+                <li><a href="tickets.html">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══ MAIN ════════════════════════════════════════════════════════ -->
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-text">
+                <h1 id="hero-heading">
+                    Sistema de<br />
+                    <em>Gestión de</em><br />
+                    Incidentes
+                </h1>
+                <p>Plataforma centralizada para el reporte, seguimiento y resolución de incidentes de soporte técnico institucional.</p>
+                <div class="btn-group">
+                    <a href="reportar.html" class="btn btn-primary">Reportar Incidente</a>
+                    <a href="tickets.html" class="btn btn-outline">Ver Tickets</a>
+                </div>
+            </div>
+            <div class="hero-terminal" role="img" aria-label="Terminal de estado del sistema">
+                <div class="terminal-bar">
+                    <span class="t-red"></span>
+                    <span class="t-yel"></span>
+                    <span class="t-grn"></span>
+                </div>
+                <p class="terminal-line">$ <span class="cmd">helpdesk</span> --status</p>
+                <p class="terminal-line">Sistema: <span class="val">OPERATIVO</span></p>
+                <p class="terminal-line">Tickets abiertos: <span class="num">14</span></p>
+                <p class="terminal-line">En progreso: <span class="num">7</span></p>
+                <p class="terminal-line">Resueltos hoy: <span class="val">9</span></p>
+                <p class="terminal-line">Tiempo prom. resp.: <span class="val">1h 23m</span></p>
+                <p class="terminal-line">SLA cumplido: <span class="val">96.4%</span></p>
+                <p class="terminal-line">Agentes en línea: <span class="num">5</span></p>
+                <p class="terminal-line">$ <span class="cursor"></span></p>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section aria-label="Estadísticas del sistema">
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="number">247</span>
+                    <span class="label">Tickets este mes</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">94%</span>
+                    <span class="label">SLA cumplido</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">1h 23m</span>
+                    <span class="label">Respuesta promedio</span>
+                </div>
+                <div class="stat-card">
+                    <span class="number">5</span>
+                    <span class="label">Agentes activos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section aria-labelledby="features-heading">
+            <h2 class="section-title" id="features-heading">Capacidades del Sistema</h2>
+            <div class="features">
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">📋</span>
+                    <h3>Reporte de Incidentes</h3>
+                    <p>Formulario estructurado para la captura precisa de incidentes con validación HTML5 nativa y categorización por tipo y prioridad.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">🔍</span>
+                    <h3>Seguimiento de Tickets</h3>
+                    <p>Vista tabulada de todos los tickets con filtros por estado, prioridad y categoría. Historial completo de cada incidente.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">📊</span>
+                    <h3>Estadísticas en Tiempo Real</h3>
+                    <p>Indicadores clave de rendimiento: tickets abiertos, tiempo de resolución y cumplimiento de SLA actualizados continuamente.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">🏷️</span>
+                    <h3>Priorización Automática</h3>
+                    <p>Clasificación de tickets en niveles Crítico, Alto, Medio y Bajo con códigos de color para identificación inmediata.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">🔔</span>
+                    <h3>Notificaciones</h3>
+                    <p>Alertas automáticas al usuario y al equipo de soporte cuando un ticket cambia de estado o requiere información adicional.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">📁</span>
+                    <h3>Adjuntos y Evidencia</h3>
+                    <p>Soporte para adjuntar capturas de pantalla, logs y archivos de configuración directamente en el reporte del incidente.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Recent Tickets Preview -->
+        <section aria-labelledby="recent-heading">
+            <div class="tickets-preview">
+                <header>
+                    <h2 id="recent-heading">Tickets Recientes</h2>
+                    <a href="tickets.html" class="btn btn-outline">Ver todos →</a>
+                </header>
+                <div role="region" aria-label="Tabla de tickets recientes" tabindex="0">
+                    <table>
+                        <caption class="visually-hidden">Últimos cinco tickets registrados en el sistema</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Asunto</th>
+                                <th scope="col">Categoría</th>
+                                <th scope="col">Prioridad</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#0042</td>
+                                <td>No conecta a la red WiFi</td>
+                                <td>Conectividad</td>
+                                <td><span class="badge badge-high">Alta</span></td>
+                                <td><span class="badge badge-prog">En Progreso</span></td>
+                                <td><time datetime="2026-06-05">05/06/2026</time></td>
+                            </tr>
+                            <tr>
+                                <td>#0041</td>
+                                <td>Error al iniciar sesión en sistema ERP</td>
+                                <td>Software</td>
+                                <td><span class="badge badge-high">Alta</span></td>
+                                <td><span class="badge badge-open">Abierto</span></td>
+                                <td><time datetime="2026-06-05">05/06/2026</time></td>
+                            </tr>
+                            <tr>
+                                <td>#0040</td>
+                                <td>Impresora HP no responde</td>
+                                <td>Hardware</td>
+                                <td><span class="badge badge-med">Media</span></td>
+                                <td><span class="badge badge-closed">Resuelto</span></td>
+                                <td><time datetime="2026-06-04">04/06/2026</time></td>
+                            </tr>
+                            <tr>
+                                <td>#0039</td>
+                                <td>Correo electrónico no envía adjuntos</td>
+                                <td>Comunicaciones</td>
+                                <td><span class="badge badge-med">Media</span></td>
+                                <td><span class="badge badge-prog">En Progreso</span></td>
+                                <td><time datetime="2026-06-04">04/06/2026</time></td>
+                            </tr>
+                            <tr>
+                                <td>#0038</td>
+                                <td>Actualizar antivirus en equipos de sala A</td>
+                                <td>Seguridad</td>
+                                <td><span class="badge badge-low">Baja</span></td>
+                                <td><span class="badge badge-closed">Resuelto</span></td>
+                                <td><time datetime="2026-06-03">03/06/2026</time></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section aria-labelledby="cta-heading">
+            <div class="cta-banner">
+                <h2 id="cta-heading">¿Tiene un problema técnico?</h2>
+                <p>Reporte su incidente ahora y nuestro equipo de soporte lo atenderá a la brevedad posible.</p>
+                <a href="reportar.html" class="btn btn-primary">Abrir Nuevo Ticket</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+    <footer>
+        <div class="footer-inner">
+            <section aria-labelledby="footer-about">
+                <h4 id="footer-about">Help Desk</h4>
+                <p style="color:var(--muted);font-size:.82rem;">Sistema de gestión de incidentes para soporte técnico institucional. Disponible 24/7.</p>
+            </section>
+            <nav aria-labelledby="footer-links-heading">
+                <h4 id="footer-links-heading">Navegación</h4>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="reportar.html">Reportar Incidente</a></li>
+                    <li><a href="tickets.html">Ver Tickets</a></li>
+                </ul>
+            </nav>
+            <address>
+                <h4>Contacto</h4>
+                <ul>
+                    <li style="color:var(--muted);font-size:.82rem;">📧 soporte@helpdesk.edu</li>
+                    <li style="color:var(--muted);font-size:.82rem;">📞 Ext. 1200</li>
+                    <li style="color:var(--muted);font-size:.82rem;">🕐 Lun–Vie 07:00–18:00</li>
+                </ul>
+            </address>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Help Desk Institucional — Desarrollado con HTML5 semántico conforme a estándares W3C</p>
+        </div>
+    </footer>
+
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+</body>
+</html>

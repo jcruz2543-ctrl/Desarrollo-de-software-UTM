@@ -1,0 +1,14 @@
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\bin\Debug\net10.0\UNIDAD2.exe
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\bin\Debug\net10.0\UNIDAD2.deps.json
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\bin\Debug\net10.0\UNIDAD2.runtimeconfig.json
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\bin\Debug\net10.0\UNIDAD2.dll
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\bin\Debug\net10.0\UNIDAD2.pdb
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.AssemblyInfoInputs.cache
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.AssemblyInfo.cs
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.csproj.CoreCompileInputs.cache
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.dll
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\refint\UNIDAD2.dll
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.pdb
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\UNIDAD2.genruntimeconfig.cache
+C:\Users\jeanc\source\repos\UNIDAD2\UNIDAD2\obj\Debug\net10.0\ref\UNIDAD2.dll
