@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Listado y seguimiento de tickets de soporte técnico — Help Desk institucional." />
+    <meta name="author" content="Help Desk Institucional" />
+    <title>Tickets | Help Desk</title>
+    <style>
+        :root {
+            --bg: #ffffff;
+            --surface: #f8fafc;
+            --border: #dbeafe;
+            --accent: #0066cc;
+            --accent2: #004aad;
+            --text: #1e293b;
+            --muted: #64748b;
+            --danger: #dc2626;
+            --warn: #d97706;
+            --ok: #16a34a;
+            --font-head: 'Arial', sans-serif;
+            --font-body: 'Segoe UI', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 14px;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                z-index: -1;
+                background-image: linear-gradient(rgba(0,194,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,255,.03) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+
+        /* ── Nav ── */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .75rem 1.5rem;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: .05em;
+        }
+
+            .logo span {
+                color: var(--text);
+            }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+            nav ul li a {
+                color: var(--muted);
+                font-size: .85rem;
+                letter-spacing: .05em;
+                text-transform: uppercase;
+                padding: .3rem 0;
+                border-bottom: 2px solid transparent;
+                transition: color .2s, border-color .2s;
+            }
+
+                nav ul li a:hover, nav ul li a[aria-current="page"] {
+                    color: var(--accent);
+                    border-bottom-color: var(--accent);
+                    text-decoration: none;
+                }
+
+        /* ── Layout ── */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-header-text h1 {
+            font-family: var(--font-head);
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .page-header-text p {
+            color: var(--muted);
+            margin-top: .3rem;
+        }
+
+        .breadcrumb {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+            color: var(--muted);
+            font-size: .78rem;
+            margin-bottom: .5rem;
+        }
+
+            .breadcrumb a {
+                color: var(--muted);
+            }
+
+                .breadcrumb a:hover {
+                    color: var(--accent);
+                }
+
+            .breadcrumb span {
+                color: var(--accent);
+            }
+
+        .btn {
+            display: inline-block;
+            padding: .6rem 1.3rem;
+            font-family: var(--font-body);
+            font-size: .8rem;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            border: 1px solid;
+            cursor: pointer;
+            transition: background .2s, color .2s;
+        }
+
+        .btn-primary {
+            background: var(--accent2);
+            color: #fff;
+            border-color: var(--accent2);
+        }
+
+            .btn-primary:hover {
+                background: var(--accent);
+                border-color: var(--accent);
+                color: #000;
+                text-decoration: none;
+            }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+            .btn-outline:hover {
+                background: var(--accent);
+                color: #000;
+                text-decoration: none;
+            }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--muted);
+            border-color: var(--border);
+        }
+
+            .btn-ghost:hover {
+                color: var(--text);
+                border-color: var(--text);
+                text-decoration: none;
+            }
+
+        .btn-sm {
+            padding: .3rem .8rem;
+            font-size: .72rem;
+        }
+
+        /* ── Stats row ── */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat {
+            background: var(--surface);
+            padding: 1rem;
+            text-align: center;
+        }
+
+            .stat .n {
+                font-family: var(--font-head);
+                font-size: 1.6rem;
+                font-weight: 700;
+                display: block;
+            }
+
+            .stat .l {
+                font-size: .72rem;
+                text-transform: uppercase;
+                letter-spacing: .07em;
+                color: var(--muted);
+            }
+
+            .stat .n.c-open {
+                color: var(--warn);
+            }
+
+            .stat .n.c-prog {
+                color: var(--accent);
+            }
+
+            .stat .n.c-closed {
+                color: var(--ok);
+            }
+
+            .stat .n.c-high {
+                color: var(--danger);
+            }
+
+            .stat .n.c-all {
+                color: var(--text);
+            }
+
+        /* ── Toolbar / filters ── */
+        .toolbar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-bottom: none;
+            padding: 1rem 1.25rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .filters {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }
+
+            .filter-group label {
+                font-size: .72rem;
+                text-transform: uppercase;
+                letter-spacing: .06em;
+                color: var(--muted);
+                white-space: nowrap;
+            }
+
+            .filter-group select, .filter-group input[type="search"] {
+                background: var(--surface2);
+                border: 1px solid var(--border);
+                color: var(--text);
+                font-family: var(--font-body);
+                font-size: .8rem;
+                padding: .35rem .7rem;
+                outline: none;
+                transition: border-color .2s;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+
+                .filter-group select:focus, .filter-group input[type="search"]:focus {
+                    border-color: var(--accent);
+                }
+
+            .filter-group input[type="search"] {
+                width: 200px;
+            }
+
+            .filter-group select {
+                padding-right: 1.8rem;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748b'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right .5rem center;
+                cursor: pointer;
+            }
+
+        /* ── Table ── */
+        .table-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        thead tr {
+            background: var(--surface2);
+        }
+
+        th {
+            padding: .75rem 1rem;
+            text-align: left;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            color: var(--muted);
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+
+            th[aria-sort="ascending"]::after {
+                content: ' ↑';
+                color: var(--accent);
+            }
+
+            th[aria-sort="descending"]::after {
+                content: ' ↓';
+                color: var(--accent);
+            }
+
+            th:hover {
+                color: var(--accent);
+            }
+
+        td {
+            padding: .7rem 1rem;
+            font-size: .82rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tbody tr:hover {
+            background: var(--surface2);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .no-results {
+            text-align: center;
+            color: var(--muted);
+            padding: 2.5rem 1rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: .18rem .55rem;
+            font-size: .68rem;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            border: 1px solid;
+            white-space: nowrap;
+        }
+
+        .badge-open {
+            color: var(--warn);
+            border-color: var(--warn);
+        }
+
+        .badge-closed {
+            color: var(--ok);
+            border-color: var(--ok);
+        }
+
+        .badge-prog {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .badge-espera {
+            color: var(--muted);
+            border-color: var(--muted);
+        }
+
+        .badge-critica {
+            color: var(--danger);
+            border-color: var(--danger);
+        }
+
+        .badge-alta {
+            color: var(--orange);
+            border-color: var(--orange);
+        }
+
+        .badge-media {
+            color: var(--warn);
+            border-color: var(--warn);
+        }
+
+        .badge-baja {
+            color: var(--ok);
+            border-color: var(--ok);
+        }
+
+        .ticket-id {
+            font-family: var(--font-head);
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .ticket-subject {
+            max-width: 240px;
+        }
+
+            .ticket-subject strong {
+                display: block;
+                color: var(--text);
+            }
+
+            .ticket-subject small {
+                color: var(--muted);
+                font-size: .72rem;
+            }
+
+        /* ── Pagination ── */
+        .pagination {
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            border-top: none;
+            padding: .75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: .75rem;
+        }
+
+        .pagination-info {
+            color: var(--muted);
+            font-size: .78rem;
+        }
+
+        .page-btns {
+            display: flex;
+            gap: .4rem;
+        }
+
+        .page-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-family: var(--font-body);
+            font-size: .75rem;
+            padding: .3rem .65rem;
+            cursor: pointer;
+            transition: border-color .2s, color .2s;
+        }
+
+            .page-btn:hover, .page-btn.active {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+
+        /* ── Detail modal ── */
+        dialog {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: .85rem;
+            padding: 0;
+            max-width: 560px;
+            width: 90%;
+            margin: auto;
+        }
+
+            dialog::backdrop {
+                background: rgba(0,0,0,.7);
+            }
+
+        .dialog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+            .dialog-header h2 {
+                font-family: var(--font-head);
+                font-size: 1rem;
+                color: var(--accent);
+            }
+
+        .dialog-close {
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 1.3rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 .25rem;
+        }
+
+            .dialog-close:hover {
+                color: var(--danger);
+            }
+
+        .dialog-body {
+            padding: 1.5rem;
+        }
+
+        .dl-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: .4rem 1.5rem;
+        }
+
+            .dl-grid dt {
+                color: var(--muted);
+                font-size: .75rem;
+                text-transform: uppercase;
+                letter-spacing: .06em;
+                padding-top: .1rem;
+            }
+
+            .dl-grid dd {
+                color: var(--text);
+            }
+
+        .timeline {
+            margin-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.25rem;
+        }
+
+            .timeline h3 {
+                font-family: var(--font-head);
+                font-size: .8rem;
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: .08em;
+                margin-bottom: 1rem;
+            }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: .75rem;
+        }
+
+        .timeline-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: .4rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            font-size: .8rem;
+        }
+
+            .timeline-content .ts {
+                color: var(--muted);
+                font-size: .72rem;
+            }
+
+        .dialog-footer {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: right;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .footer-bottom p {
+                color: var(--muted);
+                font-size: .75rem;
+            }
+
+        .footer-nav {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+            .footer-nav a {
+                color: var(--muted);
+                font-size: .75rem;
+            }
+
+                .footer-nav a:hover {
+                    color: var(--accent);
+                }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar {
+                grid-template-columns: repeat(3,1fr);
+            }
+
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            th:nth-child(4), td:nth-child(4),
+            th:nth-child(6), td:nth-child(6) {
+                display: none;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: .5rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ══ HEADER ══ -->
+    <header>
+        <nav aria-label="Navegación principal">
+            <span class="logo">HELP<span>DESK</span></span>
+            <ul role="list">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="reportar.html">Reportar</a></li>
+                <li><a href="tickets.html" aria-current="page">Tickets</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ══ MAIN ══ -->
+    <main>
+
+        <!-- Page heading -->
+        <div class="page-header">
+            <div class="page-header-text">
+                <nav class="breadcrumb" aria-label="Ruta de navegación">
+                    <a href="index.html">Inicio</a>
+                    <span aria-hidden="true">›</span>
+                    <span aria-current="page">Tickets</span>
+                </nav>
+                <h1>Gestión de Tickets</h1>
+                <p>Listado completo de incidentes registrados en el sistema.</p>
+            </div>
+            <a href="reportar.html" class="btn btn-primary">+ Nuevo Ticket</a>
+        </div>
+
+        <!-- Stats bar -->
+        <section aria-label="Resumen de tickets">
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="n c-all" id="count-all">20</span>
+                    <span class="l">Total</span>
+                </div>
+                <div class="stat">
+                    <span class="n c-open" id="count-open">6</span>
+                    <span class="l">Abiertos</span>
+                </div>
+                <div class="stat">
+                    <span class="n c-prog" id="count-prog">5</span>
+                    <span class="l">En Progreso</span>
+                </div>
+                <div class="stat">
+                    <span class="n c-closed" id="count-closed">8</span>
+                    <span class="l">Resueltos</span>
+                </div>
+                <div class="stat">
+                    <span class="n c-high" id="count-crit">4</span>
+                    <span class="l">Alta/Crítica</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toolbar -->
+        <div class="toolbar" role="search" aria-label="Filtros de tickets">
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="f-search">Buscar:</label>
+                    <input type="search" id="f-search" placeholder="ID, asunto, solicitante…" aria-label="Buscar tickets" />
+                </div>
+                <div class="filter-group">
+                    <label for="f-estado">Estado:</label>
+                    <select id="f-estado" aria-label="Filtrar por estado">
+                        <option value="">Todos</option>
+                        <option value="Abierto">Abierto</option>
+                        <option value="En Progreso">En Progreso</option>
+                        <option value="En Espera">En Espera</option>
+                        <option value="Resuelto">Resuelto</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="f-prioridad">Prioridad:</label>
+                    <select id="f-prioridad" aria-label="Filtrar por prioridad">
+                        <option value="">Todas</option>
+                        <option value="Crítica">Crítica</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Media">Media</option>
+                        <option value="Baja">Baja</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="f-categoria">Categoría:</label>
+                    <select id="f-categoria" aria-label="Filtrar por categoría">
+                        <option value="">Todas</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Conectividad">Conectividad</option>
+                        <option value="Seguridad">Seguridad</option>
+                        <option value="Comunicaciones">Comunicaciones</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" id="btn-clear" type="button">✕ Limpiar filtros</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap" role="region" aria-label="Tabla de tickets" tabindex="0">
+            <table id="tickets-table" aria-live="polite">
+                <caption class="visually-hidden">Listado de tickets de soporte técnico. Use los filtros superiores para refinar los resultados.</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" data-col="id" aria-sort="descending">ID</th>
+                        <th scope="col" data-col="asunto">Asunto / Solicitante</th>
+                        <th scope="col" data-col="categoria">Categoría</th>
+                        <th scope="col" data-col="prioridad">Prioridad</th>
+                        <th scope="col" data-col="estado">Estado</th>
+                        <th scope="col" data-col="agente">Agente</th>
+                        <th scope="col" data-col="fecha">Fecha</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tickets-body">
+                    <!-- Rows injected by JS -->
+                </tbody>
+            </table>
+            <p class="no-results" id="no-results" hidden>No se encontraron tickets con los filtros aplicados.</p>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" aria-label="Paginación de resultados">
+            <p class="pagination-info" id="pagination-info">Mostrando 1–10 de 20 tickets</p>
+            <div class="page-btns" role="list">
+                <button class="page-btn" type="button" aria-label="Página anterior" id="btn-prev">‹</button>
+                <button class="page-btn active" type="button" aria-label="Página 1, actual" aria-current="page">1</button>
+                <button class="page-btn" type="button" aria-label="Página 2" id="btn-p2">2</button>
+                <button class="page-btn" type="button" aria-label="Página siguiente" id="btn-next">›</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ══ DETAIL MODAL ══ -->
+    <dialog id="ticket-modal" aria-labelledby="modal-title" aria-modal="true">
+        <div class="dialog-header">
+            <h2 id="modal-title">Detalle del Ticket</h2>
+            <button class="dialog-close" id="modal-close" aria-label="Cerrar diálogo" type="button">×</button>
+        </div>
+        <div class="dialog-body">
+            <dl class="dl-grid" id="modal-details"></dl>
+            <div class="timeline">
+                <h3>Historial</h3>
+                <div id="modal-timeline"></div>
+            </div>
+        </div>
+        <div class="dialog-footer">
+            <button class="btn btn-ghost btn-sm" id="modal-close2" type="button">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+        <div class="footer-bottom">
+            <p>© 2026 Help Desk Institucional — HTML5 semántico · W3C válido</p>
+            <nav class="footer-nav" aria-label="Navegación del pie de página">
+                <a href="index.html">Inicio</a>
+                <a href="reportar.html">Reportar</a>
+                <a href="tickets.html">Tickets</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+    // ── Dataset ──────────────────────────────────────────────────────
+    const TICKETS = [
+      { id:'#0042', asunto:'No conecta a la red WiFi',             solicitante:'Ana Torres',       categoria:'Conectividad',    prioridad:'Alta',    estado:'En Progreso', agente:'C. Ramírez', fecha:'2026-06-05', desc:'El equipo PC-0042 no detecta las redes WiFi disponibles desde esta mañana. Ya se reinició el adaptador.', hist:['Ticket creado','Asignado a C. Ramírez','Diagnóstico en proceso'] },
+      { id:'#0041', asunto:'Error al iniciar sesión en ERP',        solicitante:'Pedro Mora',       categoria:'Software',        prioridad:'Alta',    estado:'Abierto',     agente:'—',          fecha:'2026-06-05', desc:'El sistema ERP arroja error 403 al intentar ingresar con credenciales válidas.', hist:['Ticket creado','Sin asignar'] },
+      { id:'#0040', asunto:'Impresora HP no responde',              solicitante:'Laura Calle',      categoria:'Hardware',        prioridad:'Media',   estado:'Resuelto',    agente:'M. Vega',    fecha:'2026-06-04', desc:'La impresora HP LaserJet M402 no imprime. Solución: reinstalación de controladores.', hist:['Ticket creado','Asignado a M. Vega','Controladores reinstalados','Resuelto'] },
+      { id:'#0039', asunto:'Correo no envía adjuntos',              solicitante:'Carlos Jiménez',   categoria:'Comunicaciones',  prioridad:'Media',   estado:'En Progreso', agente:'C. Ramírez', fecha:'2026-06-04', desc:'Outlook no permite adjuntar archivos mayores a 5 MB aunque el límite configurado es 25 MB.', hist:['Ticket creado','Asignado','En revisión de políticas'] },
+      { id:'#0038', asunto:'Actualizar antivirus sala A',           solicitante:'Dpto. Sistemas',   categoria:'Seguridad',       prioridad:'Baja',    estado:'Resuelto',    agente:'M. Vega',    fecha:'2026-06-03', desc:'Actualización programada de Eset Endpoint en 15 equipos de la sala A.', hist:['Ticket creado','Actualización completada','Resuelto'] },
+      { id:'#0037', asunto:'Monitor con líneas horizontales',       solicitante:'Sofía Andrade',    categoria:'Hardware',        prioridad:'Media',   estado:'En Espera',   agente:'J. Loja',    fecha:'2026-06-03', desc:'Monitor BenQ muestra líneas horizontales al encender. Pendiente de repuesto en bodega.', hist:['Ticket creado','Diagnóstico: falla de panel','En espera de repuesto'] },
+      { id:'#0036', asunto:'VPN no conecta desde casa',             solicitante:'Diego Ochoa',      categoria:'Conectividad',    prioridad:'Alta',    estado:'Resuelto',    agente:'C. Ramírez', fecha:'2026-06-02', desc:'Cliente VPN Cisco AnyConnect rechaza credenciales. Solución: reset de contraseña de dominio.', hist:['Ticket creado','Reset de credenciales','Resuelto'] },
+      { id:'#0035', asunto:'Excel cierra inesperadamente',          solicitante:'María León',       categoria:'Software',        prioridad:'Media',   estado:'Resuelto',    agente:'J. Loja',    fecha:'2026-06-02', desc:'Excel 365 se cierra al abrir archivos .xlsx de más de 10 MB. Solución: reparación de Office.', hist:['Ticket creado','Reparación de Office 365','Resuelto'] },
+      { id:'#0034', asunto:'Acceso denegado a carpeta compartida',  solicitante:'Roberto Suárez',   categoria:'Seguridad',       prioridad:'Alta',    estado:'Abierto',     agente:'—',          fecha:'2026-06-01', desc:'El usuario no puede acceder a \\\\servidor\\Contabilidad a pesar de tener permisos asignados.', hist:['Ticket creado'] },
+      { id:'#0033', asunto:'PC arranca muy lento',                  solicitante:'Patricia Rios',    categoria:'Hardware',        prioridad:'Baja',    estado:'En Progreso', agente:'M. Vega',    fecha:'2026-06-01', desc:'Tiempo de arranque supera los 5 minutos. Se sospecha de disco duro con sectores dañados.', hist:['Ticket creado','Diagnóstico: posible fallo de HDD','Pruebas en curso'] },
+      { id:'#0032', asunto:'Cámara web no funciona en Teams',       solicitante:'Jorge Peña',       categoria:'Software',        prioridad:'Baja',    estado:'Resuelto',    agente:'J. Loja',    fecha:'2026-05-31', desc:'Microsoft Teams no detecta la cámara integrada. Solución: actualización de drivers.', hist:['Ticket creado','Driver actualizado','Resuelto'] },
+      { id:'#0031', asunto:'Servidor de archivos inaccesible',      solicitante:'Dpto. Administ.',  categoria:'Conectividad',    prioridad:'Crítica', estado:'Resuelto',    agente:'C. Ramírez', fecha:'2026-05-30', desc:'Servidor FileServer01 inaccesible por falla en switch del rack 2. Impactó a 40 usuarios.', hist:['Ticket creado','Escalado a infraestructura','Switch reemplazado','Resuelto'] },
+      { id:'#0030', asunto:'Escáner no es detectado por PC',        solicitante:'Elena Vargas',     categoria:'Hardware',        prioridad:'Media',   estado:'Resuelto',    agente:'M. Vega',    fecha:'2026-05-30', desc:'Escáner Epson DS-530 no aparece en Windows 10 tras actualización de sistema.', hist:['Ticket creado','Reinstalación de drivers','Resuelto'] },
+      { id:'#0029', asunto:'Phishing recibido por correo',          solicitante:'Andrés Mora',      categoria:'Seguridad',       prioridad:'Alta',    estado:'Resuelto',    agente:'C. Ramírez', fecha:'2026-05-29', desc:'Usuario reporta correo sospechoso con enlace a sitio falso del banco. Analizado y bloqueado.', hist:['Ticket creado','Análisis de correo','Dominio bloqueado en firewall','Resuelto'] },
+      { id:'#0028', asunto:'Proyector sala de reuniones sin imagen', solicitante:'Dpto. Académico',  categoria:'Hardware',        prioridad:'Media',   estado:'Resuelto',    agente:'J. Loja',    fecha:'2026-05-29', desc:'Proyector Epson de sala 301 no muestra imagen desde el laptop. Cable HDMI defectuoso.', hist:['Ticket creado','Cable reemplazado','Resuelto'] },
+      { id:'#0027', asunto:'Actualización de Windows falla',        solicitante:'Sandra Castro',    categoria:'Software',        prioridad:'Baja',    estado:'En Espera',   agente:'J. Loja',    fecha:'2026-05-28', desc:'Windows Update queda en 35% y revierte. Requiere intervención del servidor WSUS.', hist:['Ticket creado','Asignado','Pendiente de ventana de mantenimiento'] },
+      { id:'#0026', asunto:'Sin acceso a plataforma Moodle',        solicitante:'Prof. R. Torres',  categoria:'Software',        prioridad:'Alta',    estado:'Abierto',     agente:'—',          fecha:'2026-05-28', desc:'El docente no puede ingresar a Moodle para cargar calificaciones antes del cierre.', hist:['Ticket creado'] },
+      { id:'#0025', asunto:'Teclado con teclas pegadas',            solicitante:'Luis Quito',       categoria:'Hardware',        prioridad:'Baja',    estado:'Resuelto',    agente:'M. Vega',    fecha:'2026-05-27', desc:'Teclado Dell KB216 con varias teclas que no responden. Reemplazado por stock disponible.', hist:['Ticket creado','Equipo reemplazado','Resuelto'] },
+      { id:'#0024', asunto:'Necesito instalar AutoCAD 2025',        solicitante:'Arq. P. Gutiérrez',categoria:'Software',        prioridad:'Media',   estado:'Abierto',     agente:'—',          fecha:'2026-05-27', desc:'Solicitud de instalación de AutoCAD 2025 con licencia institucional en equipo PC-0118.', hist:['Ticket creado','Pendiente de licencias'] },
+      { id:'#0023', asunto:'Disco duro lleno en servidor',          solicitante:'Dpto. Sistemas',   categoria:'Conectividad',    prioridad:'Crítica', estado:'Resuelto',    agente:'C. Ramírez', fecha:'2026-05-26', desc:'Disco D: del servidor APP01 al 98% de capacidad. Se archivaron logs antiguos y se amplió espacio.', hist:['Ticket creado','Limpieza de logs','Ampliación de disco','Resuelto'] },
+    ];
+
+    // ── Badge helpers ────────────────────────────────────────────────
+    function estadoBadge(e) {
+      const m = { 'Abierto':'badge-open','En Progreso':'badge-prog','En Espera':'badge-espera','Resuelto':'badge-closed' };
+      return `<span class="badge ${m[e]||''}">${e}</span>`;
+    }
+    function prioBadge(p) {
+      const m = { 'Crítica':'badge-critica','Alta':'badge-alta','Media':'badge-media','Baja':'badge-baja' };
+      return `<span class="badge ${m[p]||''}">${p}</span>`;
+    }
+
+    // ── Render ───────────────────────────────────────────────────────
+    let filteredTickets = [...TICKETS];
+
+    function render() {
+      const tbody = document.getElementById('tickets-body');
+      tbody.innerHTML = '';
+      if (filteredTickets.length === 0) {
+        document.getElementById('no-results').hidden = false;
+        document.getElementById('pagination-info').textContent = 'Sin resultados';
+        return;
+      }
+      document.getElementById('no-results').hidden = true;
+      document.getElementById('pagination-info').textContent = `Mostrando 1–${filteredTickets.length} de ${filteredTickets.length} tickets`;
+
+      filteredTickets.forEach(t => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="ticket-id">${t.id}</td>
+          <td class="ticket-subject">
+            <strong>${t.asunto}</strong>
+            <small>${t.solicitante}</small>
+          </td>
+          <td>${t.categoria}</td>
+          <td>${prioBadge(t.prioridad)}</td>
+          <td>${estadoBadge(t.estado)}</td>
+          <td style="color:var(--muted)">${t.agente}</td>
+          <td><time datetime="${t.fecha}">${t.fecha.split('-').reverse().join('/')}</time></td>
+          <td>
+            <button class="btn btn-outline btn-sm" data-id="${t.id}" type="button" aria-label="Ver detalles del ticket ${t.id}">Ver</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Update stat counts
+      document.getElementById('count-all').textContent   = filteredTickets.length;
+      document.getElementById('count-open').textContent  = filteredTickets.filter(t=>t.estado==='Abierto').length;
+      document.getElementById('count-prog').textContent  = filteredTickets.filter(t=>t.estado==='En Progreso').length;
+      document.getElementById('count-closed').textContent= filteredTickets.filter(t=>t.estado==='Resuelto').length;
+      document.getElementById('count-crit').textContent  = filteredTickets.filter(t=>t.prioridad==='Alta'||t.prioridad==='Crítica').length;
+    }
+
+    // ── Filters ──────────────────────────────────────────────────────
+    function applyFilters() {
+      const search   = document.getElementById('f-search').value.toLowerCase();
+      const estado   = document.getElementById('f-estado').value;
+      const prioridad= document.getElementById('f-prioridad').value;
+      const categoria= document.getElementById('f-categoria').value;
+
+      filteredTickets = TICKETS.filter(t => {
+        const matchSearch = !search ||
+          t.id.toLowerCase().includes(search) ||
+          t.asunto.toLowerCase().includes(search) ||
+          t.solicitante.toLowerCase().includes(search);
+        const matchEstado    = !estado    || t.estado    === estado;
+        const matchPrioridad = !prioridad || t.prioridad === prioridad;
+        const matchCategoria = !categoria || t.categoria === categoria;
+        return matchSearch && matchEstado && matchPrioridad && matchCategoria;
+      });
+      render();
+    }
+
+    ['f-search','f-estado','f-prioridad','f-categoria'].forEach(id => {
+      document.getElementById(id).addEventListener('input', applyFilters);
+    });
+    document.getElementById('btn-clear').addEventListener('click', () => {
+      document.getElementById('f-search').value = '';
+      document.getElementById('f-estado').value = '';
+      document.getElementById('f-prioridad').value = '';
+      document.getElementById('f-categoria').value = '';
+      applyFilters();
+    });
+
+    // ── Modal ─────────────────────────────────────────────────────────
+    const modal = document.getElementById('ticket-modal');
+
+    document.getElementById('tickets-body').addEventListener('click', e => {
+      const btn = e.target.closest('[data-id]');
+      if (!btn) return;
+      const t = TICKETS.find(x => x.id === btn.dataset.id);
+      if (!t) return;
+
+      document.getElementById('modal-title').textContent = `Ticket ${t.id}`;
+      document.getElementById('modal-details').innerHTML = `
+        <dt>Asunto</dt>        <dd>${t.asunto}</dd>
+        <dt>Solicitante</dt>   <dd>${t.solicitante}</dd>
+        <dt>Categoría</dt>     <dd>${t.categoria}</dd>
+        <dt>Prioridad</dt>     <dd>${prioBadge(t.prioridad)}</dd>
+        <dt>Estado</dt>        <dd>${estadoBadge(t.estado)}</dd>
+        <dt>Agente asignado</dt><dd>${t.agente}</dd>
+        <dt>Fecha</dt>         <dd><time datetime="${t.fecha}">${t.fecha.split('-').reverse().join('/')}</time></dd>
+        <dt>Descripción</dt>   <dd style="grid-column:1/-1;margin-top:.25rem;color:var(--muted)">${t.desc}</dd>
+      `;
+      document.getElementById('modal-timeline').innerHTML = t.hist.map((h, i) =>
+        `<div class="timeline-item">
+          <span class="timeline-dot" aria-hidden="true"></span>
+          <div class="timeline-content">
+            <p>${h}</p>
+            <span class="ts">Evento ${i+1}</span>
+          </div>
+        </div>`
+      ).join('');
+
+      modal.showModal();
+    });
+
+    function closeModal() { modal.close(); }
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-close2').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+    // ── Init ──────────────────────────────────────────────────────────
+    render();
+    </script>
+
+</body>
+</html>
