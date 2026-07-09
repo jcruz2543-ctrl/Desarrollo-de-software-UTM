@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · Help Desk</title>
+<link rel="stylesheet" href="assets/css/ui-kit.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <span class="dot"></span>
+      <span class="brand-text">Help Desk</span>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link is-active">📊 <span class="label">Dashboard</span></a>
+      <a href="reportar.html" class="sidebar__link">📝 <span class="label">Reportar</span></a>
+      <a href="tickets.html" class="sidebar__link">🎫 <span class="label">Tickets</span></a>
+    </nav>
+    <div class="sidebar__foot">Unidad 2 · Sistema de Incidentes</div>
+  </aside>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <h1 class="topbar__title">Panel general</h1>
+    <div class="topbar__actions">
+      <a href="reportar.html" class="btn btn--primary">+ Nuevo ticket</a>
+      <div class="avatar">MC</div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="content">
+
+    <section class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-card__label">Tickets abiertos</span>
+        <span class="stat-card__value">18</span>
+        <span class="stat-card__trend up">▲ 4 desde ayer</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">En progreso</span>
+        <span class="stat-card__value">9</span>
+        <span class="stat-card__trend down">▼ 2 desde ayer</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Resueltos (hoy)</span>
+        <span class="stat-card__value">12</span>
+        <span class="stat-card__trend down">▼ estable</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-card__label">Tiempo prom. resp.</span>
+        <span class="stat-card__value">2.4h</span>
+        <span class="stat-card__trend down">▼ 0.3h</span>
+      </div>
+    </section>
+
+    <section class="layout-split">
+      <div class="card">
+        <div class="card__head">
+          <h2>Tickets recientes</h2>
+          <a href="tickets.html">Ver todos →</a>
+        </div>
+        <div class="table-wrap">
+          <table class="tickets">
+            <thead>
+              <tr><th>ID</th><th>Asunto</th><th>Prioridad</th><th>Estado</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="ticket-id">#1042</td><td>No enciende impresora piso 3</td><td><span class="pill pill--urgent">Urgente</span></td><td><span class="pill pill--open">Abierto</span></td></tr>
+              <tr><td class="ticket-id">#1041</td><td>Acceso a VPN corporativa</td><td><span class="pill pill--progress">Media</span></td><td><span class="pill pill--progress">En progreso</span></td></tr>
+              <tr><td class="ticket-id">#1040</td><td>Solicitud de licencia Office</td><td><span class="pill pill--open">Baja</span></td><td><span class="pill pill--resolved">Resuelto</span></td></tr>
+              <tr><td class="ticket-id">#1039</td><td>Correo no sincroniza en móvil</td><td><span class="pill pill--progress">Media</span></td><td><span class="pill pill--open">Abierto</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__head"><h2>Equipo de soporte</h2></div>
+        <ul style="display:flex;flex-direction:column;gap:.9rem;">
+          <li style="display:flex;justify-content:space-between;">Marco Cárdenas <span class="pill pill--resolved">Disponible</span></li>
+          <li style="display:flex;justify-content:space-between;">Liliana Ortega <span class="pill pill--progress">Ocupada</span></li>
+          <li style="display:flex;justify-content:space-between;">Julio Peña <span class="pill pill--resolved">Disponible</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- NAV INFERIOR (móvil) -->
+<nav class="bottom-nav">
+  <ul class="bottom-nav__list">
+    <li class="bottom-nav__link is-active"><a href="dashboard.html" style="color:inherit;text-decoration:none;">📊<br>Dashboard</a></li>
+    <li class="bottom-nav__link"><a href="reportar.html" style="color:inherit;text-decoration:none;">📝<br>Reportar</a></li>
+    <li class="bottom-nav__link"><a href="tickets.html" style="color:inherit;text-decoration:none;">🎫<br>Tickets</a></li>
+  </ul>
+</nav>
+
+</body>
+</html>

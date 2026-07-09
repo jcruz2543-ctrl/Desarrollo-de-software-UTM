@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|c:\\users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\ui-kit.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|solutionrelative:avtivida06\\ui-kit.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|c:\\users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\reportar.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}",
+      "RelativeMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|solutionrelative:avtivida06\\reportar.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|c:\\users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\dashboard.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}",
+      "RelativeMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|solutionrelative:avtivida06\\dashboard.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|c:\\users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\tickets.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}",
+      "RelativeMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|solutionrelative:avtivida06\\tickets.html||{C76D83F8-A489-11D0-8195-00A0C91BBEE3}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|c:\\users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CCBBE6E4-7C65-4B91-B3DE-F006C604B4B2}|avtivida06\\avtivida06.csproj|solutionrelative:avtivida06\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ui-kit.css",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\ui-kit.css",
+              "RelativeDocumentMoniker": "avtivida06\\ui-kit.css",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\ui-kit.css",
+              "RelativeToolTip": "avtivida06\\ui-kit.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-09T02:43:42.453Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Tickets.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Tickets.html",
+              "RelativeDocumentMoniker": "avtivida06\\Tickets.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Tickets.html",
+              "RelativeToolTip": "avtivida06\\Tickets.html",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-07-09T02:42:13.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Reportar.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Reportar.html",
+              "RelativeDocumentMoniker": "avtivida06\\Reportar.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Reportar.html",
+              "RelativeToolTip": "avtivida06\\Reportar.html",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-07-09T02:40:54.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.html",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Dashboard.html",
+              "RelativeDocumentMoniker": "avtivida06\\Dashboard.html",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Dashboard.html",
+              "RelativeToolTip": "avtivida06\\Dashboard.html",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-07-09T02:39:16.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Program.cs",
+              "RelativeDocumentMoniker": "avtivida06\\Program.cs",
+              "ToolTip": "C:\\Users\\jeanc\\source\\repos\\avtivida06\\avtivida06\\Program.cs",
+              "RelativeToolTip": "avtivida06\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-09T02:38:18.358Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

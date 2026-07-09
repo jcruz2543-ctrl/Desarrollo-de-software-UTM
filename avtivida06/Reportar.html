@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reportar Incidente · Help Desk</title>
+<link rel="stylesheet" href="assets/css/ui-kit.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <span class="dot"></span>
+      <span class="brand-text">Help Desk</span>
+    </div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link">📊 <span class="label">Dashboard</span></a>
+      <a href="reportar.html" class="sidebar__link is-active">📝 <span class="label">Reportar</span></a>
+      <a href="tickets.html" class="sidebar__link">🎫 <span class="label">Tickets</span></a>
+    </nav>
+    <div class="sidebar__foot">Unidad 2 · Sistema de Incidentes</div>
+  </aside>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <h1 class="topbar__title">Reportar un incidente</h1>
+    <div class="topbar__actions">
+      <div class="avatar">MC</div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="content">
+    <div class="card">
+      <div class="card__head">
+        <h2>Detalles del incidente</h2>
+        <p style="margin:0;">Complete el formulario y el equipo de soporte le asignará un ticket.</p>
+      </div>
+
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Ticket registrado correctamente.');">
+
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Torres" required>
+        </div>
+
+        <div class="field">
+          <label for="depto">Departamento</label>
+          <select id="depto" name="depto" required>
+            <option value="">Seleccione...</option>
+            <option>Contabilidad</option>
+            <option>Recursos Humanos</option>
+            <option>Sistemas</option>
+            <option>Ventas</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="categoria">Categoría</label>
+          <select id="categoria" name="categoria" required>
+            <option value="">Seleccione...</option>
+            <option>Hardware</option>
+            <option>Software</option>
+            <option>Redes / Conectividad</option>
+            <option>Accesos y credenciales</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="fecha">Fecha del incidente</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+
+        <div class="field full">
+          <label>Prioridad</label>
+          <div class="priority-group">
+            <label class="priority-option"><input type="radio" name="prioridad" value="baja"> Baja</label>
+            <label class="priority-option"><input type="radio" name="prioridad" value="media" checked> Media</label>
+            <label class="priority-option"><input type="radio" name="prioridad" value="alta"> Alta</label>
+            <label class="priority-option"><input type="radio" name="prioridad" value="urgente"> Urgente</label>
+          </div>
+        </div>
+
+        <div class="field full">
+          <label for="asunto">Asunto</label>
+          <input type="text" id="asunto" name="asunto" placeholder="Resumen breve del problema" required>
+        </div>
+
+        <div class="field full">
+          <label for="descripcion">Descripción</label>
+          <textarea id="descripcion" name="descripcion" placeholder="Describa el problema con el mayor detalle posible..." required></textarea>
+          <span class="hint">Incluya mensajes de error, capturas de pantalla o pasos para reproducir el problema.</span>
+        </div>
+
+        <div class="field full form-actions">
+          <button type="reset" class="btn btn--ghost">Cancelar</button>
+          <button type="submit" class="btn btn--primary">Enviar ticket</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
+</div>
+
+<!-- NAV INFERIOR (móvil) -->
+<nav class="bottom-nav">
+  <ul class="bottom-nav__list">
+    <li class="bottom-nav__link"><a href="dashboard.html" style="color:inherit;text-decoration:none;">📊<br>Dashboard</a></li>
+    <li class="bottom-nav__link is-active"><a href="reportar.html" style="color:inherit;text-decoration:none;">📝<br>Reportar</a></li>
+    <li class="bottom-nav__link"><a href="tickets.html" style="color:inherit;text-decoration:none;">🎫<br>Tickets</a></li>
+  </ul>
+</nav>
+
+</body>
+</html>
