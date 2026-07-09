@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UI Kit — Sistema de Gestión de Incidentes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <header class="section">
+    <h1 class="section-title">UI Kit — Gestión de Incidentes</h1>
+    <p class="section-desc">Biblioteca de componentes visuales construida con CSS3 puro: variables, box-sizing: border-box y selectores avanzados.</p>
+  </header>
+
+  <!-- BOTONES -->
+  <section class="section">
+    <h2 class="section-title">Botones</h2>
+    <p class="section-desc">Variantes por color, tamaño y estado.</p>
+    <div class="stack">
+      <button class="btn btn-primary">Crear incidente</button>
+      <button class="btn btn-secondary">Ver detalle</button>
+      <button class="btn btn-danger">Cerrar incidente</button>
+      <button class="btn btn-ghost">Cancelar</button>
+      <button class="btn btn-primary" disabled>Deshabilitado</button>
+    </div>
+    <br>
+    <div class="stack">
+      <button class="btn btn-primary btn-sm">Pequeño</button>
+      <button class="btn btn-primary">Normal</button>
+      <button class="btn btn-primary btn-lg">Grande</button>
+    </div>
+  </section>
+
+  <!-- FORMULARIOS -->
+  <section class="section">
+    <h2 class="section-title">Formularios</h2>
+    <p class="section-desc">Campos para el registro de un nuevo incidente.</p>
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label class="form-label" for="titulo">Título del incidente<span class="required">*</span></label>
+              <input class="form-control" type="text" id="titulo" placeholder="Ej. Caída del servidor de pagos">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="severidad">Severidad</label>
+              <select class="form-control" id="severidad">
+                <option>Crítica</option>
+                <option>Advertencia</option>
+                <option>Informativa</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" placeholder="Detalle lo ocurrido..."></textarea>
+            <span class="form-hint">Máximo 500 caracteres.</span>
+          </div>
+
+          <div class="form-group has-error">
+            <label class="form-label" for="correo">Correo de contacto<span class="required">*</span></label>
+            <input class="form-control" type="email" id="correo" value="correo-invalido">
+            <span class="form-error">Ingrese un correo electrónico válido.</span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-check">
+              <input type="checkbox" id="notificar" checked>
+              <label for="notificar">Notificar al equipo de guardia</label>
+            </div>
+          </div>
+
+          <div class="stack">
+            <button type="submit" class="btn btn-primary">Registrar incidente</button>
+            <button type="button" class="btn btn-ghost">Descartar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARJETAS -->
+  <section class="section">
+    <h2 class="section-title">Tarjetas de incidente</h2>
+    <p class="section-desc">La franja lateral y la insignia comunican la severidad de un vistazo.</p>
+    <div class="grid grid-3">
+
+      <div class="card card-incident severity-critical">
+        <div class="card-body">
+          <span class="incident-id">INC-2026-0417</span>
+          <h3 class="card-title" style="margin-top:4px;">Caída del servicio de pagos</h3>
+          <p class="section-desc" style="margin:8px 0;">El gateway de pagos no responde desde las 14:20.</p>
+          <span class="badge badge-critical">Crítico</span>
+          <div class="incident-meta">
+            <span>Asignado: N. Torres</span>
+            <span>Hace 12 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-incident severity-warning">
+        <div class="card-body">
+          <span class="incident-id">INC-2026-0418</span>
+          <h3 class="card-title" style="margin-top:4px;">Latencia elevada en API</h3>
+          <p class="section-desc" style="margin:8px 0;">Tiempos de respuesta superiores a 2s en el 12% de las peticiones.</p>
+          <span class="badge badge-warning">En progreso</span>
+          <div class="incident-meta">
+            <span>Asignado: M. Vega</span>
+            <span>Hace 40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card card-incident severity-success">
+        <div class="card-body">
+          <span class="incident-id">INC-2026-0410</span>
+          <h3 class="card-title" style="margin-top:4px;">Error en exportación de reportes</h3>
+          <p class="section-desc" style="margin:8px 0;">Corregido mediante actualización del servicio de reportes.</p>
+          <span class="badge badge-success">Resuelto</span>
+          <div class="incident-meta">
+            <span>Asignado: L. Paredes</span>
+            <span>Hace 3 h</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ALERTAS -->
+  <section class="section">
+    <h2 class="section-title">Alertas</h2>
+    <p class="section-desc">Mensajes de sistema para distintos niveles de severidad.</p>
+
+    <div class="stack" style="flex-direction:column; align-items:stretch;">
+      <div class="alert alert-critical">
+        <div class="alert-content">
+          <span class="alert-title">Incidente crítico activo</span>
+          El servicio de autenticación está caído. Escale al equipo de guardia de inmediato.
+        </div>
+        <button class="alert-close" aria-label="Cerrar alerta">&times;</button>
+      </div>
+
+      <div class="alert alert-warning">
+        <div class="alert-content">
+          <span class="alert-title">Advertencia</span>
+          El uso de CPU del servidor principal superó el 85%.
+        </div>
+        <button class="alert-close" aria-label="Cerrar alerta">&times;</button>
+      </div>
+
+      <div class="alert alert-info">
+        <div class="alert-content">
+          <span class="alert-title">Mantenimiento programado</span>
+          El sistema estará en mantenimiento el sábado de 02:00 a 04:00.
+        </div>
+        <button class="alert-close" aria-label="Cerrar alerta">&times;</button>
+      </div>
+
+      <div class="alert alert-success">
+        <div class="alert-content">
+          <span class="alert-title">Incidente resuelto</span>
+          INC-2026-0410 fue cerrado exitosamente.
+        </div>
+        <button class="alert-close" aria-label="Cerrar alerta">&times;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PALETA Y TIPOGRAFÍA -->
+  <section class="section">
+    <h2 class="section-title">Paleta y tipografía</h2>
+    <p class="section-desc">Variables definidas en <code class="mono">:root</code>.</p>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-body">
+        <div style="background:var(--color-primary); height:40px; border-radius:6px; margin-bottom:8px;"></div>
+        <span class="mono" style="font-size:var(--fs-xs);">--color-primary</span>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="background:var(--color-critical); height:40px; border-radius:6px; margin-bottom:8px;"></div>
+        <span class="mono" style="font-size:var(--fs-xs);">--color-critical</span>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <div style="background:var(--color-warning); height:40px; border-radius:6px; margin-bottom:8px;"></div>
+        <span class="mono" style="font-size:var(--fs-xs);">--color-warning</span>
+      </div></div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
